@@ -70,6 +70,12 @@
   margin: 0;
   /* Força a fonte em absolutamente todos os elementos */
   font-family: 'Akt', var(--font-inter), sans-serif !important;
+  /* Remove realce azul no mobile */
+  -webkit-tap-highlight-color: transparent;
+}
+
+*:focus {
+  outline: none;
 }
 
 html,

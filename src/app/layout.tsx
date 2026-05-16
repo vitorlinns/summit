@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/components/layout/Header";
@@ -11,6 +12,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://summit-luxury.vercel.app'),
   title: {
     default: "Summit | Luxury Real Estate",
     template: "%s | Summit Luxury"
@@ -55,7 +57,9 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className={inter.variable}>
         <Preloader />
-        <Header />
+        <Suspense fallback={null}>
+          <Header />
+        </Suspense>
         {children}
         <Footer />
       </body>

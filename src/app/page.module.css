@@ -1,7 +1,13 @@
 .main {
   display: block;
   min-height: 100vh;
-  padding-top: 80px;
+  padding-top: 80px; /* Desktop Header Height */
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding-top: 60px; /* Mobile Header Height */
+  }
 }
 
 .hero {
@@ -95,6 +101,28 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-lg);
+}
+
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .container {
+    padding: 0 var(--space-md);
+  }
 }
 
 .emptyState {

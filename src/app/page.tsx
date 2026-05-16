@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Filters, { FilterState } from "@/components/property/Filters";
@@ -36,7 +36,6 @@ const SUITES_MAP: Record<string, number> = {
 
 function applyFilters(filters: FilterState, searchTerm: string) {
   return allProperties.filter(p => {
-    // Busca por texto (Header)
     if (searchTerm) {
       const searchLower = searchTerm.toLowerCase();
       const matchesTitle = p.title.toLowerCase().includes(searchLower);
@@ -44,7 +43,6 @@ function applyFilters(filters: FilterState, searchTerm: string) {
       if (!matchesTitle && !matchesLocation) return false;
     }
 
-    // Filtros de Dropdown
     if (filters.location && p.location !== filters.location) return false;
     if (filters.type && p.type !== filters.type) return false;
     if (filters.price) {
@@ -63,7 +61,7 @@ function applyFilters(filters: FilterState, searchTerm: string) {
   });
 }
 
-export default function Home() {
+function HomeContent() {
   const searchParams = useSearchParams();
   const q = searchParams.get('q') || '';
   
@@ -129,7 +127,6 @@ export default function Home() {
         types={ALL_TYPES}
       />
 
-      {/* Single empty state when no results at all */}
       {isFiltering && filtered.length === 0 ? (
         <div className={styles.container}>
           <div className={styles.emptyState}>
@@ -193,32 +190,26 @@ export default function Home() {
 
           <div className={styles.servicesGrid}>
             <div className={styles.serviceCard}>
-              <div className={styles.serviceIcon}>
-                <CreditCard size={32} strokeWidth={1} />
-              </div>
+              <div className={styles.serviceIcon}><CreditCard size={32} strokeWidth={1} /></div>
               <h3 className={styles.serviceTitle}>Assessoria Financeira</h3>
               <p className={styles.serviceDesc}>
-                Conexão direta com as divisões de Private Banking dos principais bancos nacionais e internacionais para estruturação de crédito personalizado.
+                Conexão direta com as divisões de Private Banking dos principais bancos nacionais e internacionais.
               </p>
             </div>
 
             <div className={styles.serviceCard}>
-              <div className={styles.serviceIcon}>
-                <ShieldCheck size={32} strokeWidth={1} />
-              </div>
+              <div className={styles.serviceIcon}><ShieldCheck size={32} strokeWidth={1} /></div>
               <h3 className={styles.serviceTitle}>Segurança Jurídica</h3>
               <p className={styles.serviceDesc}>
-                Análise minuciosa de toda a documentação e histórico do imóvel por nossa banca jurídica especializada em transações de alto valor.
+                Análise minuciosa de toda a documentação por nossa banca jurídica especializada.
               </p>
             </div>
 
             <div className={styles.serviceCard}>
-              <div className={styles.serviceIcon}>
-                <Award size={32} strokeWidth={1} />
-              </div>
+              <div className={styles.serviceIcon}><Award size={32} strokeWidth={1} /></div>
               <h3 className={styles.serviceTitle}>Gestão de Patrimônio</h3>
               <p className={styles.serviceDesc}>
-                Serviço de concierge para manutenção, administração de locação e valorização do seu ativo imobiliário com total discrição.
+                Serviço de concierge para manutenção e valorização do seu ativo imobiliário.
               </p>
             </div>
           </div>
@@ -229,5 +220,13 @@ export default function Home() {
         </div>
       </section>
     </main>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={null}>
+      <HomeContent />
+    </Suspense>
   );
 }

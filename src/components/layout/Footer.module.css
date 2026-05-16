@@ -28,7 +28,7 @@
 
 .logo {
   filter: brightness(0) invert(1);
-  height: 24px;
+  height: 16px;
   width: auto;
   object-fit: contain;
   margin-bottom: var(--space-xs);
@@ -122,6 +122,10 @@
 }
 
 @media (max-width: 600px) {
+  .container {
+    padding: 0 var(--space-md);
+  }
+
   .top {
     grid-template-columns: 1fr;
   }
