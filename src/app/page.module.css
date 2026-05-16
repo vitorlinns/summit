@@ -97,6 +97,22 @@
   gap: var(--space-lg);
 }
 
+.emptyState {
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed var(--gray-200);
+  border-radius: 12px;
+}
+
+.emptyText {
+  color: var(--gray-400);
+  font-size: 0.95rem;
+  font-weight: 300;
+  text-align: center;
+}
+
 .viewMoreWrapper {
   margin-top: var(--space-xl);
   display: flex;
@@ -143,7 +159,7 @@
 
 .servicesSection {
   padding: var(--space-xl) 0;
-  background-color: var(--secondary);
+  background-color: #000000;
   color: white;
 }
 
@@ -195,6 +211,7 @@
 
 .whiteText {
   color: #ffffff !important;
+  font-weight: 400;
 }
 
 .whiteBtn {

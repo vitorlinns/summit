@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import TransitionLink from '@/components/common/TransitionLink';
 import { Search, User } from 'lucide-react';
 import styles from './Header.module.css';
 
@@ -8,15 +8,15 @@ export default function Header() {
       <div className={styles.container}>
         {/* Lado Esquerdo: Logo */}
         <div className={styles.left}>
-          <Link href="/">
+          <TransitionLink href="/">
             <img src="/brand/logo.png" alt="Summit Logo" className={styles.logo} />
-          </Link>
+          </TransitionLink>
           <div className={styles.divider} />
           <nav className={styles.nav}>
-            <Link href="/admin" className={styles.navLink}>Administração</Link>
-            <Link href="/locatario" className={styles.navLink}>Locatário</Link>
-            <Link href="/proprietario" className={styles.navLink}>Proprietário</Link>
-            <Link href="/anunciar" className={styles.navLink}>Anunciar meu imóvel</Link>
+            <TransitionLink href="/login" className={styles.navLink}>Administração</TransitionLink>
+            <TransitionLink href="/login" className={styles.navLink}>Locatário</TransitionLink>
+            <TransitionLink href="/login" className={styles.navLink}>Proprietário</TransitionLink>
+            <TransitionLink href="/login" className={styles.navLink}>Anunciar meu imóvel</TransitionLink>
           </nav>
         </div>
 
@@ -30,10 +30,10 @@ export default function Header() {
               className={styles.searchInput}
             />
           </div>
-          <button className={styles.userButton} aria-label="Área do Usuário">
+          <TransitionLink href="/login" className={styles.userButton} aria-label="Área do Usuário">
             <User size={20} />
             <span className={styles.userText}>Entrar</span>
-          </button>
+          </TransitionLink>
         </div>
       </div>
     </header>

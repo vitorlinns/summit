@@ -94,6 +94,15 @@
   padding: 8px;
   list-style: none;
   z-index: 1000;
+  /* Invisible scroll */
+  max-height: 240px;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.dropdownMenu::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
 }
 
 .dropdownOption {

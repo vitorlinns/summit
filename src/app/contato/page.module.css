@@ -1,0 +1,150 @@
+.main {
+  min-height: 100vh;
+  padding-top: 120px; /* Space for header */
+  background-color: #ffffff;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.header {
+  margin-bottom: var(--space-xl);
+  text-align: left;
+}
+
+.title {
+  font-family: var(--font-modern);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--secondary);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-xs);
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--gray-600);
+  max-width: 600px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+.formSection {
+  background: #ffffff;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gray-600);
+  font-weight: 500;
+}
+
+.input, .textarea {
+  padding: 16px;
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: var(--transition-smooth);
+  background-color: var(--gray-50);
+}
+
+.input:focus, .textarea:focus {
+  outline: none;
+  background-color: #ffffff;
+}
+
+.textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.infoTitle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--secondary);
+}
+
+.infoText {
+  font-size: 0.95rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+
+.socials {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.socialLink {
+  color: var(--secondary);
+  border: 1px solid var(--gray-200);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: var(--transition-smooth);
+}
+
+.socialLink:hover {
+  background-color: var(--secondary);
+  color: #ffffff;
+  border-color: var(--secondary);
+}
+
+.submitBtn {
+  align-self: flex-start;
+  margin-top: var(--space-xs);
+  min-width: 240px; /* Optional: ensures a minimum substantial presence */
+}
+
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+  
+  .title {
+    font-size: 2.5rem;
+  }
+}

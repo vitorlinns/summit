@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, useEffect } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Filters from "@/components/property/Filters";
+import Filters, { FilterState } from "@/components/property/Filters";
 import PropertyCard from "@/components/property/PropertyCard";
 import Button from "@/components/common/Button";
 import { CreditCard, ShieldCheck, Award } from "lucide-react";
-import properties from "@/data/properties.json";
+import allProperties from "@/data/properties.json";
 import styles from "./page.module.css";
 
 const HERO_IMAGES = [
@@ -16,8 +16,54 @@ const HERO_IMAGES = [
   "https://images.unsplash.com/photo-1600566753190-17f0bb2a6c3e?auto=format&fit=crop&q=80&w=2000"
 ];
 
+// Derive unique locations and types from real data
+const ALL_LOCATIONS = [...new Set(allProperties.map(p => p.location))].sort();
+const ALL_TYPES = [...new Set(allProperties.map(p => p.type))].sort();
+
+// Maps price range labels to actual max values
+const PRICE_MAP: Record<string, number> = {
+  'Até R$ 10M': 10_000_000,
+  'Até R$ 20M': 20_000_000,
+  'Até R$ 30M': 30_000_000,
+  'Acima de R$ 30M': Infinity,
+};
+
+// Maps suite labels to minimum suites
+const SUITES_MAP: Record<string, number> = {
+  '1+ Suítes': 1,
+  '3+ Suítes': 3,
+  '5+ Suítes': 5,
+  '7+ Suítes': 7,
+};
+
+function applyFilters(filters: FilterState) {
+  return allProperties.filter(p => {
+    if (filters.location && p.location !== filters.location) return false;
+    if (filters.type && p.type !== filters.type) return false;
+    if (filters.price) {
+      const max = PRICE_MAP[filters.price];
+      if (max === Infinity) {
+        if (p.price <= 30_000_000) return false;
+      } else {
+        if (p.price > max) return false;
+      }
+    }
+    if (filters.suites) {
+      const min = SUITES_MAP[filters.suites];
+      if (p.specs.suites < min) return false;
+    }
+    return true;
+  });
+}
+
 export default function Home() {
   const [currentImage, setCurrentImage] = useState(0);
+  const [filters, setFilters] = useState<FilterState>({
+    location: '',
+    type: '',
+    price: '',
+    suites: '',
+  });
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -25,6 +71,12 @@ export default function Home() {
     }, 5000);
     return () => clearInterval(timer);
   }, []);
+
+  const filtered = useMemo(() => applyFilters(filters), [filters]);
+  const isFiltering = Object.values(filters).some(v => v !== '');
+
+  const saleProperties = useMemo(() => filtered.filter(p => p.purpose === 'sale'), [filtered]);
+  const rentProperties = useMemo(() => filtered.filter(p => p.purpose === 'rent'), [filtered]);
 
   return (
     <main className={styles.main}>
@@ -61,45 +113,65 @@ export default function Home() {
         </div>
       </section>
       
-      <Filters />
+      <Filters 
+        onFilterChange={setFilters} 
+        locations={ALL_LOCATIONS}
+        types={ALL_TYPES}
+      />
 
-      <section className={styles.recentSection}>
+      {/* Single empty state when no results at all */}
+      {isFiltering && filtered.length === 0 ? (
         <div className={styles.container}>
-          <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Imóveis em Destaque</h2>
-            <p className={styles.sectionSubtitle}>Uma seleção rigorosa do que há de melhor no mercado brasileiro</p>
-          </div>
-
-          <div className={styles.grid}>
-            {properties.filter(p => p.purpose === 'sale').map((property) => (
-              <PropertyCard key={property.id} property={property} />
-            ))}
-          </div>
-
-          <div className={styles.viewMoreWrapper}>
-            <Button>Ver todos imóveis a venda</Button>
+          <div className={styles.emptyState}>
+            <p className={styles.emptyText}>Nenhum imóvel encontrado com os filtros selecionados.</p>
           </div>
         </div>
-      </section>
+      ) : (
+        <>
+          {(!isFiltering || saleProperties.length > 0) && (
+            <section className={styles.recentSection}>
+              <div className={styles.container}>
+                <div className={styles.sectionHeader}>
+                  <h2 className={styles.sectionTitle}>Imóveis em Destaque</h2>
+                  <p className={styles.sectionSubtitle}>Uma seleção rigorosa do que há de melhor no mercado brasileiro</p>
+                </div>
+                <div className={styles.grid}>
+                  {saleProperties.map((property) => (
+                    <PropertyCard key={property.id} property={property} />
+                  ))}
+                </div>
+                {!isFiltering && (
+                  <div className={styles.viewMoreWrapper}>
+                    <Button>Ver todos imóveis a venda</Button>
+                  </div>
+                )}
+              </div>
+            </section>
+          )}
 
-      <section className={styles.rentalSection}>
-        <div className={styles.container}>
-          <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Locação de Alto Padrão</h2>
-            <p className={styles.sectionSubtitle}>Experiências exclusivas e estadias inesquecíveis</p>
-          </div>
+          {(!isFiltering || rentProperties.length > 0) && (
+            <section className={styles.rentalSection}>
+              <div className={styles.container}>
+                <div className={styles.sectionHeader}>
+                  <h2 className={styles.sectionTitle}>Locação de Alto Padrão</h2>
+                  <p className={styles.sectionSubtitle}>Experiências exclusivas e estadias inesquecíveis</p>
+                </div>
+                <div className={styles.grid}>
+                  {rentProperties.map((property) => (
+                    <PropertyCard key={property.id} property={property} />
+                  ))}
+                </div>
+                {!isFiltering && (
+                  <div className={styles.viewMoreWrapper}>
+                    <Button>Ver todos imóveis para locação</Button>
+                  </div>
+                )}
+              </div>
+            </section>
+          )}
+        </>
+      )}
 
-          <div className={styles.grid}>
-            {properties.filter(p => p.purpose === 'rent').map((property) => (
-              <PropertyCard key={property.id} property={property} />
-            ))}
-          </div>
-
-          <div className={styles.viewMoreWrapper}>
-            <Button>Ver todos imóveis para locação</Button>
-          </div>
-        </div>
-      </section>
       <section className={styles.servicesSection}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>

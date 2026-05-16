@@ -12,6 +12,19 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Filters.module.css';
 
+export interface FilterState {
+  location: string;
+  type: string;
+  price: string;
+  suites: string;
+}
+
+interface FiltersProps {
+  onFilterChange: (filters: FilterState) => void;
+  locations: string[];
+  types: string[];
+}
+
 interface DropdownProps {
   label: string;
   icon: React.ReactNode;
@@ -72,7 +85,7 @@ function CustomDropdown({ label, icon, options, placeholder, value, onChange }: 
             {options.map((option) => (
               <li 
                 key={option} 
-                className={styles.dropdownOption}
+                className={`${styles.dropdownOption} ${value === option ? styles.selected : ''}`}
                 onClick={() => { onChange(option); setIsOpen(false); }}
               >
                 {option}
@@ -85,31 +98,57 @@ function CustomDropdown({ label, icon, options, placeholder, value, onChange }: 
   );
 }
 
-export default function Filters() {
+const PRICE_OPTIONS = [
+  'Até R$ 10M',
+  'Até R$ 20M',
+  'Até R$ 30M',
+  'Acima de R$ 30M',
+];
+
+const SUITES_OPTIONS = [
+  '1+ Suítes',
+  '3+ Suítes',
+  '5+ Suítes',
+  '7+ Suítes',
+];
+
+export default function Filters({ onFilterChange, locations, types }: FiltersProps) {
   const [location, setLocation] = useState('');
   const [type, setType] = useState('');
   const [price, setPrice] = useState('');
   const [suites, setSuites] = useState('');
+
+  const applyFilter = (updated: Partial<FilterState>) => {
+    const next: FilterState = {
+      location,
+      type,
+      price,
+      suites,
+      ...updated,
+    };
+    onFilterChange(next);
+  };
 
   const handleReset = () => {
     setLocation('');
     setType('');
     setPrice('');
     setSuites('');
+    onFilterChange({ location: '', type: '', price: '', suites: '' });
   };
 
   return (
     <section className={styles.filtersSection}>
       <div className={styles.container}>
         <div className={styles.filterBar}>
-          
+
           <CustomDropdown 
             label="Localização"
             icon={<MapPin size={16} />}
             placeholder="Todos os Locais"
             value={location}
-            onChange={setLocation}
-            options={["São Paulo, SP", "Rio de Janeiro, RJ", "Balneário Camboriú, SC", "Trancoso, BA", "Angra dos Reis, RJ", "Gramado, RS"]}
+            onChange={(val) => { setLocation(val); applyFilter({ location: val }); }}
+            options={locations}
           />
 
           <div className={styles.divider} />
@@ -119,8 +158,8 @@ export default function Filters() {
             icon={<Home size={16} />}
             placeholder="Qualquer Tipo"
             value={type}
-            onChange={setType}
-            options={["Mansões", "Penthouses", "Casas de Praia", "Fazendas de Luxo"]}
+            onChange={(val) => { setType(val); applyFilter({ type: val }); }}
+            options={types}
           />
 
           <div className={styles.divider} />
@@ -130,8 +169,8 @@ export default function Filters() {
             icon={<DollarSign size={16} />}
             placeholder="Sem Limite"
             value={price}
-            onChange={setPrice}
-            options={["Até R$ 5M", "Até R$ 10M", "Até R$ 50M", "R$ 100M+"]}
+            onChange={(val) => { setPrice(val); applyFilter({ price: val }); }}
+            options={PRICE_OPTIONS}
           />
 
           <div className={styles.divider} />
@@ -141,17 +180,14 @@ export default function Filters() {
             icon={<Bed size={16} />}
             placeholder="Qualquer"
             value={suites}
-            onChange={setSuites}
-            options={["2+ Suítes", "4+ Suítes", "6+ Suítes", "8+ Suítes"]}
+            onChange={(val) => { setSuites(val); applyFilter({ suites: val }); }}
+            options={SUITES_OPTIONS}
           />
 
           <div className={styles.actions}>
             <button className={styles.advancedBtn} onClick={handleReset}>
               <X size={18} />
               <span>Limpar</span>
-            </button>
-            <button className={styles.searchBtn}>
-              Buscar
             </button>
           </div>
 

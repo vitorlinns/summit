@@ -1,0 +1,138 @@
+.footer {
+  background-color: #000000;
+  color: #ffffff;
+  padding: var(--space-xl) 0 var(--space-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: var(--space-xl);
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.brandColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.logo {
+  filter: brightness(0) invert(1);
+  height: 24px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: var(--space-xs);
+}
+
+.tagline {
+  font-size: 0.95rem;
+  color: var(--gray-400);
+  line-height: 1.6;
+  max-width: 320px;
+  font-weight: 300;
+}
+
+.columnTitle {
+  font-family: var(--font-modern);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-md);
+}
+
+.linkList, .contactList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.linkList a {
+  color: var(--gray-400);
+  font-size: 0.95rem;
+  transition: var(--transition-smooth);
+  font-weight: 300;
+}
+
+.linkList a:hover {
+  color: #ffffff;
+  padding-left: 4px;
+}
+
+.contactList li {
+  display: flex;
+  gap: var(--space-sm);
+  font-size: 0.95rem;
+  color: var(--gray-400);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.contactIcon {
+  color: #ffffff;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--space-lg);
+  font-size: 0.85rem;
+  color: var(--gray-500);
+}
+
+.legalLinks {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.legalLinks a {
+  color: var(--gray-500);
+  transition: var(--transition-smooth);
+}
+
+.legalLinks a:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 1024px) {
+  .top {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+  }
+  
+  .brandColumn {
+    grid-column: span 2;
+    margin-bottom: var(--space-md);
+  }
+}
+
+@media (max-width: 600px) {
+  .top {
+    grid-template-columns: 1fr;
+  }
+  
+  .brandColumn {
+    grid-column: span 1;
+  }
+  
+  .bottom {
+    flex-direction: column;
+    gap: var(--space-md);
+    text-align: center;
+  }
+}
