@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Filters, { FilterState } from "@/components/property/Filters";
 import PropertyCard from "@/components/property/PropertyCard";
@@ -16,11 +17,9 @@ const HERO_IMAGES = [
   "https://images.unsplash.com/photo-1600566753190-17f0bb2a6c3e?auto=format&fit=crop&q=80&w=2000"
 ];
 
-// Derive unique locations and types from real data
 const ALL_LOCATIONS = [...new Set(allProperties.map(p => p.location))].sort();
 const ALL_TYPES = [...new Set(allProperties.map(p => p.type))].sort();
 
-// Maps price range labels to actual max values
 const PRICE_MAP: Record<string, number> = {
   'Até R$ 10M': 10_000_000,
   'Até R$ 20M': 20_000_000,
@@ -28,7 +27,6 @@ const PRICE_MAP: Record<string, number> = {
   'Acima de R$ 30M': Infinity,
 };
 
-// Maps suite labels to minimum suites
 const SUITES_MAP: Record<string, number> = {
   '1+ Suítes': 1,
   '3+ Suítes': 3,
@@ -36,8 +34,17 @@ const SUITES_MAP: Record<string, number> = {
   '7+ Suítes': 7,
 };
 
-function applyFilters(filters: FilterState) {
+function applyFilters(filters: FilterState, searchTerm: string) {
   return allProperties.filter(p => {
+    // Busca por texto (Header)
+    if (searchTerm) {
+      const searchLower = searchTerm.toLowerCase();
+      const matchesTitle = p.title.toLowerCase().includes(searchLower);
+      const matchesLocation = p.location.toLowerCase().includes(searchLower);
+      if (!matchesTitle && !matchesLocation) return false;
+    }
+
+    // Filtros de Dropdown
     if (filters.location && p.location !== filters.location) return false;
     if (filters.type && p.type !== filters.type) return false;
     if (filters.price) {
@@ -57,6 +64,9 @@ function applyFilters(filters: FilterState) {
 }
 
 export default function Home() {
+  const searchParams = useSearchParams();
+  const q = searchParams.get('q') || '';
+  
   const [currentImage, setCurrentImage] = useState(0);
   const [filters, setFilters] = useState<FilterState>({
     location: '',
@@ -72,8 +82,8 @@ export default function Home() {
     return () => clearInterval(timer);
   }, []);
 
-  const filtered = useMemo(() => applyFilters(filters), [filters]);
-  const isFiltering = Object.values(filters).some(v => v !== '');
+  const filtered = useMemo(() => applyFilters(filters, q), [filters, q]);
+  const isFiltering = Object.values(filters).some(v => v !== '') || q !== '';
 
   const saleProperties = useMemo(() => filtered.filter(p => p.purpose === 'sale'), [filtered]);
   const rentProperties = useMemo(() => filtered.filter(p => p.purpose === 'rent'), [filtered]);
@@ -123,7 +133,9 @@ export default function Home() {
       {isFiltering && filtered.length === 0 ? (
         <div className={styles.container}>
           <div className={styles.emptyState}>
-            <p className={styles.emptyText}>Nenhum imóvel encontrado com os filtros selecionados.</p>
+            <p className={styles.emptyText}>
+              {q ? `Nenhum imóvel encontrado para "${q}"` : "Nenhum imóvel encontrado com os filtros selecionados."}
+            </p>
           </div>
         </div>
       ) : (

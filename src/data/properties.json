@@ -6,9 +6,21 @@
     "price": 25480000,
     "purpose": "sale",
     "type": "Penthouse",
-    "specs": { "area": 452, "suites": 5, "parking": 4 },
+    "specs": {
+      "area": 452,
+      "suites": 5,
+      "parking": 4
+    },
     "image": "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&q=80&w=1000",
-    "tags": ["Destaque", "Frente Mar"]
+    "tags": [
+      "Destaque",
+      "Frente Mar"
+    ],
+    "agent": {
+      "name": "Ricardo Sanches",
+      "title": "Private Broker SC",
+      "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=200"
+    }
   },
   {
     "id": "2",
@@ -17,9 +29,20 @@
     "price": 42150000,
     "purpose": "sale",
     "type": "Mansão",
-    "specs": { "area": 1240, "suites": 6, "parking": 10 },
+    "specs": {
+      "area": 1240,
+      "suites": 6,
+      "parking": 10
+    },
     "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1000",
-    "tags": ["Exclusivo"]
+    "tags": [
+      "Exclusivo"
+    ],
+    "agent": {
+      "name": "Rodrigo Almeida",
+      "title": "Consultor Private SP",
+      "image": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=200"
+    }
   },
   {
     "id": "3",
@@ -28,9 +51,20 @@
     "price": 18230000,
     "purpose": "sale",
     "type": "Casa de Luxo",
-    "specs": { "area": 865, "suites": 5, "parking": 6 },
+    "specs": {
+      "area": 865,
+      "suites": 5,
+      "parking": 6
+    },
     "image": "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&q=80&w=1000",
-    "tags": ["Arquitetura"]
+    "tags": [
+      "Arquitetura"
+    ],
+    "agent": {
+      "name": "Beatriz Neves",
+      "title": "Especialista Bahia Luxury",
+      "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200"
+    }
   },
   {
     "id": "4",
@@ -39,9 +73,20 @@
     "price": 12890000,
     "purpose": "sale",
     "type": "Apartamento",
-    "specs": { "area": 328, "suites": 4, "parking": 3 },
+    "specs": {
+      "area": 328,
+      "suites": 4,
+      "parking": 3
+    },
     "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1000",
-    "tags": ["Novo"]
+    "tags": [
+      "Novo"
+    ],
+    "agent": {
+      "name": "Fernanda Amaral",
+      "title": "Head of Luxury RJ",
+      "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200"
+    }
   },
   {
     "id": "5",
@@ -50,9 +95,20 @@
     "price": 15420000,
     "purpose": "sale",
     "type": "Mansão",
-    "specs": { "area": 912, "suites": 5, "parking": 6 },
+    "specs": {
+      "area": 912,
+      "suites": 5,
+      "parking": 6
+    },
     "image": "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1000",
-    "tags": ["Design"]
+    "tags": [
+      "Design"
+    ],
+    "agent": {
+      "name": "Gustavo Meyer",
+      "title": "Executive Broker Sul",
+      "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200"
+    }
   },
   {
     "id": "6",
@@ -61,9 +117,20 @@
     "price": 34850000,
     "purpose": "sale",
     "type": "Cobertura",
-    "specs": { "area": 512, "suites": 4, "parking": 3 },
+    "specs": {
+      "area": 512,
+      "suites": 4,
+      "parking": 3
+    },
     "image": "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&q=80&w=1000",
-    "tags": ["Vista Mar"]
+    "tags": [
+      "Vista Mar"
+    ],
+    "agent": {
+      "name": "Ricardo Sanches",
+      "title": "Private Broker SC",
+      "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=200"
+    }
   },
   {
     "id": "7",
@@ -72,9 +139,20 @@
     "price": 27950000,
     "purpose": "sale",
     "type": "Mansão",
-    "specs": { "area": 1520, "suites": 8, "parking": 12 },
+    "specs": {
+      "area": 1520,
+      "suites": 8,
+      "parking": 12
+    },
     "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1000",
-    "tags": ["Privativo"]
+    "tags": [
+      "Privativo"
+    ],
+    "agent": {
+      "name": "Rodrigo Almeida",
+      "title": "Consultor Private SP",
+      "image": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=200"
+    }
   },
   {
     "id": "8",
@@ -83,9 +161,20 @@
     "price": 19450000,
     "purpose": "sale",
     "type": "Casa de Praia",
-    "specs": { "area": 625, "suites": 6, "parking": 4 },
+    "specs": {
+      "area": 625,
+      "suites": 6,
+      "parking": 4
+    },
     "image": "https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=80&w=1000",
-    "tags": ["Pé na Areia"]
+    "tags": [
+      "Pé na Areia"
+    ],
+    "agent": {
+      "name": "Beatriz Neves",
+      "title": "Especialista Bahia Luxury",
+      "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200"
+    }
   },
   {
     "id": "9",
@@ -94,9 +183,20 @@
     "price": 15450,
     "purpose": "rent",
     "type": "Apartamento",
-    "specs": { "area": 215, "suites": 3, "parking": 2 },
+    "specs": {
+      "area": 215,
+      "suites": 3,
+      "parking": 2
+    },
     "image": "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&q=80&w=1000",
-    "tags": ["Aluguel"]
+    "tags": [
+      "Aluguel"
+    ],
+    "agent": {
+      "name": "Fernanda Amaral",
+      "title": "Head of Luxury RJ",
+      "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200"
+    }
   },
   {
     "id": "10",
@@ -105,9 +205,20 @@
     "price": 12850,
     "purpose": "rent",
     "type": "Chalé de Luxo",
-    "specs": { "area": 255, "suites": 3, "parking": 2 },
+    "specs": {
+      "area": 255,
+      "suites": 3,
+      "parking": 2
+    },
     "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1000",
-    "tags": ["Serra"]
+    "tags": [
+      "Serra"
+    ],
+    "agent": {
+      "name": "Gustavo Meyer",
+      "title": "Executive Broker Sul",
+      "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200"
+    }
   },
   {
     "id": "11",
@@ -116,9 +227,20 @@
     "price": 45200,
     "purpose": "rent",
     "type": "Casa de Ilha",
-    "specs": { "area": 1050, "suites": 7, "parking": 0 },
+    "specs": {
+      "area": 1050,
+      "suites": 7,
+      "parking": 0
+    },
     "image": "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&q=80&w=1000",
-    "tags": ["Heliponto"]
+    "tags": [
+      "Heliponto"
+    ],
+    "agent": {
+      "name": "Ricardo Sanches",
+      "title": "Private Broker SC",
+      "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=200"
+    }
   },
   {
     "id": "12",
@@ -127,9 +249,20 @@
     "price": 8450,
     "purpose": "rent",
     "type": "Loft",
-    "specs": { "area": 125, "suites": 1, "parking": 2 },
+    "specs": {
+      "area": 125,
+      "suites": 1,
+      "parking": 2
+    },
     "image": "https://images.unsplash.com/photo-1515263487990-61b07816b324?auto=format&fit=crop&q=80&w=1000",
-    "tags": ["Design"]
+    "tags": [
+      "Design"
+    ],
+    "agent": {
+      "name": "Rodrigo Almeida",
+      "title": "Consultor Private SP",
+      "image": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=200"
+    }
   },
   {
     "id": "13",
@@ -138,9 +271,20 @@
     "price": 20450,
     "purpose": "rent",
     "type": "Cobertura",
-    "specs": { "area": 412, "suites": 4, "parking": 4 },
+    "specs": {
+      "area": 412,
+      "suites": 4,
+      "parking": 4
+    },
     "image": "https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&q=80&w=1000",
-    "tags": ["Vista Mar"]
+    "tags": [
+      "Vista Mar"
+    ],
+    "agent": {
+      "name": "Beatriz Neves",
+      "title": "Especialista Bahia Luxury",
+      "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200"
+    }
   },
   {
     "id": "14",
@@ -149,9 +293,20 @@
     "price": 18750,
     "purpose": "rent",
     "type": "Mansão",
-    "specs": { "area": 620, "suites": 5, "parking": 6 },
+    "specs": {
+      "area": 620,
+      "suites": 5,
+      "parking": 6
+    },
     "image": "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&q=80&w=1000",
-    "tags": ["Inverno"]
+    "tags": [
+      "Inverno"
+    ],
+    "agent": {
+      "name": "Fernanda Amaral",
+      "title": "Head of Luxury RJ",
+      "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200"
+    }
   },
   {
     "id": "15",
@@ -160,9 +315,20 @@
     "price": 25800,
     "purpose": "rent",
     "type": "Casa Modernista",
-    "specs": { "area": 715, "suites": 4, "parking": 5 },
+    "specs": {
+      "area": 715,
+      "suites": 4,
+      "parking": 5
+    },
     "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1000",
-    "tags": ["Segurança"]
+    "tags": [
+      "Segurança"
+    ],
+    "agent": {
+      "name": "Gustavo Meyer",
+      "title": "Executive Broker Sul",
+      "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200"
+    }
   },
   {
     "id": "16",
@@ -171,8 +337,19 @@
     "price": 10450,
     "purpose": "rent",
     "type": "Flat de Luxo",
-    "specs": { "area": 85, "suites": 1, "parking": 1 },
+    "specs": {
+      "area": 85,
+      "suites": 1,
+      "parking": 1
+    },
     "image": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=1000",
-    "tags": ["Praia"]
+    "tags": [
+      "Praia"
+    ],
+    "agent": {
+      "name": "Ricardo Sanches",
+      "title": "Private Broker SC",
+      "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=200"
+    }
   }
 ]
