@@ -1,142 +1,209 @@
-.page {
-  --background: #fafafa;
-  --foreground: #fff;
+.main {
+  display: block;
+  min-height: 100vh;
+  padding-top: 80px;
+}
 
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
+.hero {
+  position: relative;
   display: flex;
-  flex: 1;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-family: var(--font-geist-sans);
+  align-items: center;
+  text-align: center;
+  min-height: 40vh;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000');
+  background-size: cover;
+  background-position: center;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 10;
+  padding: var(--space-lg);
+  color: white;
+}
+
+.title {
+  font-family: var(--font-modern);
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  color: #ffffff;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.9;
+  color: #ffffff;
+}
+
+.recentSection {
+  padding: var(--space-xl) 0;
   background-color: var(--background);
 }
 
-.main {
-  display: flex;
-  flex: 1;
-  width: 100%;
-  max-width: 800px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
+.rentalSection {
+  padding: var(--space-xl) 0;
+  background-color: var(--background);
 }
 
-.intro {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.sectionHeader {
+  margin-bottom: var(--space-lg);
   text-align: left;
-  gap: 24px;
 }
 
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
+.sectionTitle {
+  font-family: var(--font-modern);
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: var(--secondary);
+  margin-bottom: 4px;
 }
 
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
+.sectionSubtitle {
+  font-size: 1.1rem;
+  color: var(--gray-700);
+  font-weight: 300;
 }
 
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
 }
 
-.ctas {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
-}
-
-.ctas a {
+.viewMoreWrapper {
+  margin-top: var(--space-xl);
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
-  cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
+.viewMoreBtn {
+  padding: 16px 40px;
+  border: 1px solid var(--secondary);
+  background: transparent;
+  color: var(--secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: var(--transition-smooth);
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
+.viewMoreBtn:hover {
+  background-color: var(--secondary);
+  color: white;
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
   }
+}
 
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
+  .grid {
+    grid-template-columns: 1fr;
   }
-
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
+  
+  .sectionTitle {
+    font-size: 2rem;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
+.servicesSection {
+  padding: var(--space-xl) 0;
+  background-color: var(--secondary);
+  color: white;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+  margin-top: var(--space-lg);
+}
+
+.serviceCard {
+  padding: var(--space-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  transition: var(--transition-smooth);
+}
+
+.serviceCard:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.serviceIcon {
+  margin-bottom: var(--space-md);
+  color: white;
+}
+
+.serviceTitle {
+  font-family: var(--font-modern);
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: var(--space-sm);
+  letter-spacing: 0.05em;
+}
+
+.serviceDesc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--gray-400);
+  font-weight: 300;
+}
+
+@media (max-width: 1024px) {
+  .servicesGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
   }
+}
 
-  .page {
-    --background: #000;
-    --foreground: #000;
+.whiteText {
+  color: #ffffff !important;
+}
 
-    --text-primary: #ededed;
-    --text-secondary: #999;
+.whiteBtn {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  color: #ffffff !important;
+}
 
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
-  }
+.whiteBtn:hover {
+  background-color: #ffffff !important;
+  color: var(--secondary) !important;
+  border-color: #ffffff !important;
 }
